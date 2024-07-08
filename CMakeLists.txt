@@ -6,6 +6,8 @@ add_executable(${PROJECT_NAME} main.cpp)
 
 add_subdirectory(external/glfw)
 
+add_subdirectory(external/glad/cmake)
+
 target_include_directories(${PROJECT_NAME} 
     PUBLIC external/glfw/include
 )
