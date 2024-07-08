@@ -2,20 +2,52 @@ cmake_minimum_required(VERSION 3.25)
 
 project(OpenGL)
 
-add_executable(${PROJECT_NAME} main.cpp)
+set(GLAD_SRC_DIR external/glad/src/)
 
-add_subdirectory(external/glfw)
+set(SOURCES
+    main.cpp
+    ${GLAD_SRC_DIR}gl.c
+)
 
-add_subdirectory(external/glad/cmake)
+add_executable(${PROJECT_NAME} ${SOURCES})
+
+# add_subdirectory(external/glfw)
 
 target_include_directories(${PROJECT_NAME} 
     PUBLIC external/glfw/include
+    PUBLIC external/glad/include
 )
 
 target_link_directories(${PROJECT_NAME}
-    PRIVATE enternal/glfw/src
+    PUBLIC external/glfw/src
 )   
 
 target_link_libraries(${PROJECT_NAME}
     glfw 
 )
+
+# cmake_minimum_required(VERSION 3.25)
+# project(OpenGL)
+
+# set(CMAKE_CXX_STANDARD 17)
+
+# set(GLFW_DIR
+#         /Library/Frameworks/GLFW)
+
+# set(GLAD_DIR
+#         /Library/Frameworks/GLAD)
+
+# include_directories(${GLFW_DIR}/include
+#         ${GLAD_DIR}/include)
+
+# set(SOURCES
+#         main.cpp
+#         glad.c
+#         ${GLFW_DIR}/include/GLFW/glfw3.h
+#         ${GLFW_DIR}/include/GLFW/glfw3native.h
+#         ${GLAD_DIR}/include/glad/glad.h
+#         ${GLAD_DIR}/include/KHR/khrplatform.h)
+
+# add_executable(OpenGL ${SOURCES})
+
+# target_link_libraries(${PROJECT_NAME} PUBLIC ${GLFW_DIR}/lib/libglfw.3.dylib)
