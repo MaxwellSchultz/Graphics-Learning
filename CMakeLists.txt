@@ -37,6 +37,7 @@ set(GLAD_DIR /Library/Frameworks/GLAD)
 
 set(SOURCES
     main.cpp
+    stb_image.cpp
     external/glad/src/glad.c
     ${GLFW_DIR}/include/GLFW/glfw3.h
     ${GLFW_DIR}/include/GLFW/glfw3native.h
@@ -49,6 +50,7 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 include_directories(
     PUBLIC ${GLFW_DIR}/include
     PUBLIC ${GLAD_DIR}/include
+    PUBLIC external/stb/include
 )
 
 target_link_libraries(${PROJECT_NAME} PUBLIC ${GLFW_DIR}/lib/libglfw.3.dylib)
